@@ -25,12 +25,12 @@ jobs:
           java-version: "17.x"
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: "3.35.6"
+          flutter-version: "3.38.6"
       - run: flutter pub get
       - run: flutter test
       - run: flutter build apk --debug --split-per-abi
       - name: Create or Update Release
-        uses: ncipollo/release-action@v4
+        uses: ncipollo/release-action@v1
         with:
           artifacts: "build/app/outputs/apk/debug/*"
           tag: v1.0.${{ github.run_number }}
