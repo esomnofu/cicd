@@ -5,6 +5,8 @@ on:
       - master
 
   push:
+    tags:
+      - "v*"
     branches:
       - main
       - master
@@ -29,8 +31,8 @@ jobs:
       - run: flutter pub get
       - run: flutter test
       - run: flutter build apk --debug --split-per-abi
-      - name: Create or Update Release
-        uses: ncipollo/release-action@v1
+      - name: Create Release
+        uses: ncipollo/release-action@v1.10.0
         with:
           artifacts: "build/app/outputs/flutter-apk/*"
           tag: v1.0.${{ github.run_number }}
